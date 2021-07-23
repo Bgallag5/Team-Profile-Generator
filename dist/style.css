@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+
+header{
+    margin: 0 auto;
+    background-color: rgb(247, 65, 65);
+    text-align: center;
+    color: white;
+    font-size: 5vh;
+    padding: 20px;
+}
+
+#page{
+    margin: 5vh;
+    display: flex;
+    justify-content: space-around;
+}
+
+.profile{
+    padding: 2vh;
+}
+
+.top-buffer{
+    margin-top: 2vh;
+}
