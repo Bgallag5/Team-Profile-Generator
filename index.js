@@ -1,5 +1,5 @@
 const inquirer = require("inquirer");
-const Employee = require("./lib/Employee");
+// const Employee = require("./lib/Employee");
 const Manager = require("./lib/Manager");
 const Intern = require("./lib/Intern");
 const Engineer = require("./lib/Engineer");
@@ -108,43 +108,37 @@ const getInfo = function () {
           }
         },
       },
+      {
+        type: "confirm",
+        name: "add",
+        message: "Add another team member?",
+        default: false,
+      },
     ])
     .then((response) => {     //if role = ...push this employee to the team array
  
         console.log(response.user);
-        // const { user, id, email, officeNum, github, school } = response;
+        let { user, id, email, officeNum, github, school, add } = response;
+        let newEmployee;
         if(response.role === 'Manager'){
-            const { user, id, email, officeNum } = response;
-            const manager = new Manager(user, id, email, officeNum);
-            console.log(manager);
-            team.push(manager);
-            return team;
+             newEmployee = new Manager(user, id, email, officeNum);
+            console.log(newEmployee);
         } else if(response.role === 'Engineer'){
-            const {user, id, email, github} = response;
-            const engineer = new Engineer(user, id, email, github);
-            team.push(engineer)
+             newEmployee = new Engineer(user, id, email, github);
          } else if(response.role === 'Intern'){
-            const {user, id, email, school} = response;
-            const intern = new Intern(user, id, email, school);
-            team.push(intern)
+             newEmployee = new Intern(user, id, email, school);
          }
+         team.push(newEmployee);
+        console.log(team);
 
-      console.log(team);
+        if(add){
+            return getInfo(team);
+        } else if (!add){
+            return team;
+        }
     });
 };
 
-// const addAnother = function () {
-//   inquirer.prompt({
-//     type: "confirm",
-//     name: "add",
-//     message: "Add another team member?",
-//     validate: (add) => {
-//       if (add) {
-//         return (getInfo());
-//       } 
-//     },
-//   });
-// };
 
 //function to write the pageHTML to index.html
 const printPage = function (pageHTML) {
@@ -160,9 +154,6 @@ const printPage = function (pageHTML) {
 //init application => call getInfo => send team array to html format file => print formatted html to index.html
 
 getInfo()
-// .then({
-//     addAnother
-// })
   .then(team => {
     return writeHTML(team);
   })

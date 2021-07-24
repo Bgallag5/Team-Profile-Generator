@@ -1,11 +1,9 @@
-
 //blank team array
-
 
 //write html for each of 3 roles
 
-const makeManager = function (data){
-return `
+const makeManager = function (data) {
+  return `
 <div class="card col-6 border-danger bg-light shadow profile top-buffer" style="width: 18rem" id="employee">
 <div class="card-header mb-3 text-light" style="background-color: rgb(247, 65, 65);">
     <h4>${data.user}</h4>
@@ -18,75 +16,74 @@ return `
   <li class="list-group-item p-2">Office Number: ${data.officeNum}</li>
 </ul>
 </div>
-</div>`
-}
+</div>`;
+};
 
-const makeEngineer = function(data){
-    return `
-<div class="card col-6 border-danger bg-light shadow profile top-buffer" style="width: 18rem" id="employee">
-<div class="card-header mb-3 text-light" style="background-color: rgb(247, 65, 65);">
-    <h4>${data.user}</h4>
-    <h5>Manager</h5>
-  </div>
-  <div class="card-body">
-<ul class="list-group list-group-flush">
-  <li class="list-group-item p-2">ID: ${data.id} </li>
-  <li class="list-group-item p-2">Email: ${data.email}</li>
-  <li class="list-group-item p-2">Office Number: ${data.github}</li>
-</ul>
-</div>
-</div>`
-}
-
-const makeIntern = function (data) {
-    return `
-    <div class="card col-6 border-danger bg-light shadow profile top-buffer" style="width: 18rem" id="employee">
-    <div class="card-header mb-3 text-light" style="background-color: rgb(247, 65, 65);">
+const makeEngineer = function (data) {
+  return `
+    <div class="card border-primary col-6 bg-light shadow profile top-buffer" style="width: 18rem" id="employee">
+    <div class="card-header mb-3 text-light" style="background-color: rgb(48, 48, 245);">
         <h4>${data.user}</h4>
-        <h5>Manager</h5>
+        <h5>Engineer</h5>
       </div>
       <div class="card-body">
     <ul class="list-group list-group-flush">
-      <li class="list-group-item p-2">ID: ${data.id} </li>
-      <li class="list-group-item p-2">Email: ${data.email}</li>
-      <li class="list-group-item p-2">Office Number: ${data.github}</li>
+      <li class="list-group-item p-2">ID: ${data.id}</li>
+      <li class="list-group-item p-2"> Email: ${data.email}</li>
+      <li class="list-group-item p-2">Github: ${data.github}</li>
     </ul>
-    </div>
-    </div>`
-}
+  </div>
+  </div>`;
+};
+
+const makeIntern = function (data) {
+  return `
+    <div class="card border-success col-6 bg-light shadow profile top-buffer" style="width: 18rem" id="employee">
+          <div class="card-header mb-3 text-light" style="background-color: rgb(52, 190, 52);">
+              <h4>${data.user}</h4>
+              <h5>Intern</h5>
+            </div>
+            <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item p-2">ID: ${data.id}</li>
+            <li class="list-group-item p-2">Email: ${data.email}</li>
+            <li class="list-group-item p-2">School: ${data.school}</li>
+          </ul>
+        </div>
+        </div>`;
+};
 
 getRole = (team) => {
-    const teamArray = [];
-    console.log(team);
+  const teamArray = [];
+  console.log(team);
 
-        for(i = 0; i < team.length; i++){
-        const person = team[i];
-        const role = person.getRole();
-        console.log(role);
-        if (role === 'Manager'){
-            const manager = makeManager(person)
-    
-            teamArray.push(manager);
-        } else if (role === 'Engineer'){
-            const engineer = makeEngineer(person)
+  for (i = 0; i < team.length; i++) {
+    const person = team[i];
+    const role = person.getRole();
+    console.log(role);
+    if (role === "Manager") {
+      const manager = makeManager(person);
 
-            teamArray.push(engineer);
-        } else if(role === 'Intern'){
-            const intern = makeIntern(person)
+      teamArray.push(manager);
+    } else if (role === "Engineer") {
+      const engineer = makeEngineer(person);
 
-            teamArray.push(intern);
-        }
-    };
- 
-    const allEmployees = teamArray.join('');
-    const pageHtmlEl = genPage(allEmployees)
-    return pageHtmlEl;
-}
+      teamArray.push(engineer);
+    } else if (role === "Intern") {
+      const intern = makeIntern(person);
 
+      teamArray.push(intern);
+    }
+  }
 
-function genPage(pageHtmlEl){
-//take teamArray and display in html mockup
-return `
+  const allEmployees = teamArray.join("");
+  const pageHtmlEl = genPage(allEmployees);
+  return pageHtmlEl;
+};
+
+function genPage(pageHtmlEl) {
+  //take teamArray and display in html mockup
+  return `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -110,7 +107,7 @@ return `
         </div>
         </div>
       </body>
-    </html>`
-};
+    </html>`;
+}
 
 module.exports = getRole;
