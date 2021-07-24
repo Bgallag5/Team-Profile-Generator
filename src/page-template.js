@@ -11,7 +11,7 @@ const makeManager = function (data) {
   <div class="card-body">
 <ul class="list-group list-group-flush">
   <li class="list-group-item p-2">ID: ${data.id} </li>
-  <li class="list-group-item p-2">Email: ${data.email}</li>
+  <li class="list-group-item p-2"><a href = "mailto: ${data.email}">Email: ${data.email}</a></li>
   <li class="list-group-item p-2">Office Number: ${data.officeNum}</li>
 </ul>
 </div>
@@ -28,8 +28,8 @@ const makeEngineer = function (data) {
       <div class="card-body">
     <ul class="list-group list-group-flush">
       <li class="list-group-item p-2">ID: ${data.id}</li>
-      <li class="list-group-item p-2"> Email: ${data.email}</li>
-      <li class="list-group-item p-2">Github: ${data.github}</li>
+      <li class="list-group-item p-2"><a href = "mailto: ${data.email}">Email: ${data.email}</a></li>
+      <li class="list-group-item p-2"><a href = "https://github.com/${data.github}" target = "_blank">Github: ${data.github}</a></li>
     </ul>
   </div>
   </div>`;
@@ -45,7 +45,7 @@ const makeIntern = function (data) {
             <div class="card-body">
           <ul class="list-group list-group-flush">
             <li class="list-group-item p-2">ID: ${data.id}</li>
-            <li class="list-group-item p-2">Email: ${data.email}</li>
+            <li class="list-group-item p-2"><a href = "mailto: ${data.email}">Email: ${data.email}</a></li>
             <li class="list-group-item p-2">School: ${data.school}</li>
           </ul>
         </div>
