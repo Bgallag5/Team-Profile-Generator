@@ -1,6 +1,5 @@
-//blank team array
 
-//write html for each of 3 roles
+//functions to write html for each of 3 roles
 
 const makeManager = function (data) {
   return `
@@ -53,6 +52,7 @@ const makeIntern = function (data) {
         </div>`;
 };
 
+//take objects in array 'team' => send to makeEmployee() functions above => push new objects (now html blocks) to teamArray 
 getRole = (team) => {
   const teamArray = [];
   console.log(team);
@@ -77,7 +77,7 @@ getRole = (team) => {
   }
 
   const allEmployees = teamArray.join("");
-  const pageHtmlEl = genPage(allEmployees);
+  const pageHtmlEl = genPage(allEmployees);  //send new array into final html function
   return pageHtmlEl;
 };
 

@@ -1,8 +1,8 @@
-const { test } = require('@jest/globals');
+const { test, expect } = require('@jest/globals');
 const Intern = require('../lib/Intern');
 
 test('test new Intern', () => {
-   if(1 = 1){
-       return true;
-   }
+  const intern = new Intern('Sarah');
+
+  expect(intern.user).toBe('Sarah');
 })

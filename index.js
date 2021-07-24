@@ -69,8 +69,8 @@ const getInfo = function () {
       {
         type: "text",
         name: "officeNum",
-        message: "What is this employees office number?", //manager specific
-        when: (data) => data.role === "Manager",
+        message: "What is this employees office number?", 
+        when: (data) => data.role === "Manager",   //manager specific
         validate: (officeNum) => {
           if (officeNum) {
             return true;
@@ -83,8 +83,8 @@ const getInfo = function () {
       {
         type: "text",
         name: "github",
-        message: "Please enter this employees github name", //engineer specific
-        when: (data) => data.role === "Engineer",
+        message: "Please enter this employees github name", 
+        when: (data) => data.role === "Engineer",   //engineer specific
         validate: (github) => {
           if (github) {
             return true;
@@ -97,8 +97,8 @@ const getInfo = function () {
       {
         type: "text",
         name: "school",
-        message: "Please enter this employees school name", //intern specific
-        when: (data) => data.role === "Intern",
+        message: "Please enter this employees school name", 
+        when: (data) => data.role === "Intern",   //intern specific
         validate: (school) => {
           if (school) {
             return true;
@@ -108,14 +108,14 @@ const getInfo = function () {
           }
         },
       },
-      {
+      {  
         type: "confirm",
         name: "add",
         message: "Add another team member?",
         default: false,
       },
     ])
-    .then((response) => {     //if role = ...push this employee to the team array
+    .then((response) => {     //deconstruct response => if role = ...push this employee to the team array
  
         console.log(response.user);
         let { user, id, email, officeNum, github, school, add } = response;
@@ -131,7 +131,7 @@ const getInfo = function () {
          team.push(newEmployee);
         console.log(team);
 
-        if(add){
+        if(add){  //if add member => re-run getInfo() with current team passed in 
             return getInfo(team);
         } else if (!add){
             return team;
@@ -151,7 +151,7 @@ const printPage = function (pageHTML) {
   });
 };
 
-//init application => call getInfo => send team array to html format file => print formatted html to index.html
+//call getInfo => send team array to html format file => print formatted html to index.html
 
 getInfo()
   .then(team => {
