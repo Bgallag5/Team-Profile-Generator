@@ -1,5 +1,4 @@
 const inquirer = require("inquirer");
-// const Employee = require("./lib/Employee");
 const Manager = require("./lib/Manager");
 const Intern = require("./lib/Intern");
 const Engineer = require("./lib/Engineer");
@@ -124,7 +123,7 @@ const getInfo = function () {
              newEmployee = new Manager(user, id, email, officeNum);
             console.log(newEmployee);
         } else if(response.role === 'Engineer'){
-             newEmployee = new Engineer(user, id, email, github);
+              newEmployee = new Engineer(user, id, email, github);
          } else if(response.role === 'Intern'){
              newEmployee = new Intern(user, id, email, school);
          }
@@ -163,5 +162,5 @@ getInfo()
   .catch((err) => {
     if (err) {
       console.log(err);
-    }
+    }3
   });
